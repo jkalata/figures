@@ -1,0 +1,10 @@
+<mat-card>
+  <div class="options-container">
+    <app-calc-type
+      (calculationChange)="changeCalculation($event)"
+    ></app-calc-type>
+    <app-figure-select
+      (figureChange)="changeFigure($event)"
+    ></app-figure-select>
+  </div>
+</mat-card>

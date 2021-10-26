@@ -1,0 +1,7 @@
+<mat-select placeholder="Wybierz figurę">
+  <mat-option
+    *ngFor="let figure of figures | keyvalue"
+    [value]="figure.value"
+    >{{ figure.key }}</mat-option
+  >
+</mat-select>

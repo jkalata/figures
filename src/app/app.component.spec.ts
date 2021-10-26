@@ -1,31 +1,27 @@
-import { TestBed } from '@angular/core/testing';
+import { FigureCalculationsComponent } from './modules/figure-calculations/figure-calculations.component';
+import { MockComponent } from 'ng-mocks';
 import { AppComponent } from './app.component';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+  let component: AppComponent;
+  let spectator: Spectator<AppComponent>;
+
+  const createComponent = createComponentFactory({
+    component: AppComponent,
+    declarations: [MockComponent(FigureCalculationsComponent)],
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    spectator = createComponent();
+    component = spectator.component;
   });
 
-  it(`should have as title 'figures'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('figures');
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('figures app is running!');
+  it('renders FigureCalculationsComponent', () => {
+    expect(spectator.query(FigureCalculationsComponent)).toBeTruthy();
   });
 });

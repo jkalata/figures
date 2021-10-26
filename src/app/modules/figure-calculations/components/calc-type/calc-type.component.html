@@ -1,0 +1,7 @@
+<mat-radio-group>
+  <mat-radio-button
+    *ngFor="let calculation of calculations | keyvalue"
+    [value]="calculation.value"
+    >{{ calculation.key }}</mat-radio-button
+  >
+</mat-radio-group>
