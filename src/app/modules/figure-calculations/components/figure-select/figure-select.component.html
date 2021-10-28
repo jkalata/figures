@@ -1,4 +1,8 @@
-<mat-select placeholder="Wybierz figurę">
+<mat-label>Figura</mat-label>
+<mat-select
+  placeholder="Wybierz figurę"
+  (selectionChange)="emitFigureChange($event)"
+>
   <mat-option
     *ngFor="let figure of figures | keyvalue"
     [value]="figure.value"

@@ -1,0 +1,11 @@
+<div *ngFor="let field of args | keyvalue">
+  <mat-label>{{ field.key }}</mat-label>
+  <input
+    type="number"
+    matInput
+    [value]="field.value"
+    (input)="updateArgs($event, field.key)"
+  />
+</div>
+
+<button mat-raised-button (click)="emitParameterChange()">Oblicz</button>

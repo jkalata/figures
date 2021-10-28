@@ -1,4 +1,12 @@
 .options-container {
   display: flex;
-  flex-direction: row;
+}
+
+app-calc-type {
+  padding: 1em;
+}
+
+app-figure-select {
+  min-width: 150px;
+  padding: 1em;
 }

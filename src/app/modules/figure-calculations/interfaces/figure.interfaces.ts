@@ -1,6 +1,7 @@
 export interface IFigure {
-  area(args: any): number;
-  circumference(args: any): number;
+  args: any;
+  area(): number;
+  circumference(): number;
 }
 
 export interface IRectangle {

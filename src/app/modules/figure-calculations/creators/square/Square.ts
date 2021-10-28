@@ -1,10 +1,8 @@
-import { IFigure, ISquare } from '../../interfaces/figure.interfaces';
-export class Square implements IFigure {
-  area(args: ISquare): number {
-    return args.a * args.a;
-  }
-
-  circumference(args: ISquare): number {
-    return args.a * 4;
-  }
+import { Rectangle } from './../rectangle/Rectangle';
+import { IRectangle } from './../../interfaces/figure.interfaces';
+export class Square extends Rectangle {
+  args: IRectangle = {
+    a: 0,
+    b: this.args.a,
+  };
 }

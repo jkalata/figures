@@ -3,8 +3,9 @@ import { Rectangle } from './rectangle/Rectangle';
 import { Circle } from './circle/Circle';
 import { EFigures } from './../interfaces/figure.interfaces';
 import { IFigure } from '../interfaces/figure.interfaces';
+import { Figure } from './Figure';
 export class FigureCreator {
-  create(figure: EFigures): IFigure {
+  create(figure: EFigures): Figure {
     switch (figure) {
       case EFigures.circle:
         return new Circle();

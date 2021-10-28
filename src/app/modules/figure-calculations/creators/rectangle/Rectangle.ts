@@ -1,10 +1,16 @@
 import { IFigure, IRectangle } from '../../interfaces/figure.interfaces';
-export class Rectangle implements IFigure {
-  area(args: IRectangle): number {
-    return args.a * args.b;
+import { Figure } from '../Figure';
+export class Rectangle extends Figure {
+  args: IRectangle = {
+    a: 0,
+    b: 0,
+  };
+
+  area(): number {
+    return this.args.a * this.args.b;
   }
 
-  circumference(args: IRectangle): number {
-    return args.a * 2 + args.b * 2;
+  circumference(): number {
+    return this.args.a * 2 + this.args.b * 2;
   }
 }
