@@ -13,6 +13,7 @@ describe('Square', () => {
   beforeEach(() => {
     spectator = createService();
     service = spectator.service;
+    service.args = { a };
   });
 
   it('should be created', () => {
@@ -20,10 +21,10 @@ describe('Square', () => {
   });
 
   it('calculates area', () => {
-    expect(service.area({ a })).toBe(Math.pow(a, 2));
+    expect(service.area()).toBe(Math.pow(a, 2));
   });
 
-  it('calculates circumference', () => {
-    expect(service.circumference({ a })).toBe(a * 4);
+  it('calculates perimeter', () => {
+    expect(service.perimeter()).toBe(a * 4);
   });
 });

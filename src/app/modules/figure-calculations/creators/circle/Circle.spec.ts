@@ -14,6 +14,7 @@ describe('Circle', () => {
   beforeEach(() => {
     spectator = createService();
     service = spectator.service;
+    service.args = { radius };
   });
 
   it('should be created', () => {
@@ -21,10 +22,10 @@ describe('Circle', () => {
   });
 
   it('calculates area', () => {
-    expect(service.area({ radius })).toBe(Math.PI * Math.pow(radius, 2));
+    expect(service.area()).toBe(Math.PI * Math.pow(radius, 2));
   });
 
-  it('calculates circumference', () => {
-    expect(service.circumference({ radius })).toBe(2 * Math.PI * radius);
+  it('calculates perimeter', () => {
+    expect(service.perimeter()).toBe(2 * Math.PI * radius);
   });
 });

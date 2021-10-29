@@ -1,6 +1,7 @@
 import { ITwoDimensionalFigure } from './../interfaces/figure.interfaces';
 export abstract class TwoDimensionalFigure implements ITwoDimensionalFigure {
-  args: any;
+  abstract args: any;
+  abstract name: string;
   abstract area(): number;
-  abstract circumference(): number;
+  abstract perimeter(): number;
 }

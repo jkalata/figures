@@ -1,6 +1,8 @@
 import { ICircle } from '../../interfaces/figure.interfaces';
 import { TwoDimensionalFigure } from '../2DFigure';
 export class Circle extends TwoDimensionalFigure {
+  name = 'Circle';
+
   args: ICircle = {
     radius: 0,
   };
@@ -8,7 +10,7 @@ export class Circle extends TwoDimensionalFigure {
     return Math.PI * Math.pow(this.args.radius, 2);
   }
 
-  circumference(): number {
+  perimeter(): number {
     return 2 * Math.PI * this.args.radius;
   }
 }

@@ -1,5 +1,5 @@
-import { ECalculations } from './../../interfaces/figure.interfaces';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ECalculations } from '../../../interfaces/figure.interfaces';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-calc-type',

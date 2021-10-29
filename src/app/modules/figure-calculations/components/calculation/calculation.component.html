@@ -1,10 +1,19 @@
 <div class="calculation-container">
+  <mat-label
+    >{{ calculationParams.figure.name }}
+    {{ calculationParams.calculation }}</mat-label
+  >
   <app-parameter-fields
     [figure]="calculationParams.figure"
     (parameterChange)="calculate($event)"
   ></app-parameter-fields>
   <app-output [output]="output"></app-output>
-  <button mat-raised-button color="accent" (click)="emitGoToSelection()">
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="emitGoToSelection()"
+    data-testid="goback-button"
+  >
     Back
   </button>
 </div>

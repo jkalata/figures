@@ -6,6 +6,7 @@
     (calculationChange)="changeCalculation($event)"
   ></app-calc-type>
   <button
+    data-testid="next"
     mat-raised-button
     color="primary"
     [disabled]="!(figure && calculation)"

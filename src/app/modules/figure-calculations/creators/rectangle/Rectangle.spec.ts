@@ -15,6 +15,7 @@ describe('Rectangle', () => {
   beforeEach(() => {
     spectator = createService();
     service = spectator.service;
+    service.args = { a, b };
   });
 
   it('should be created', () => {
@@ -22,10 +23,10 @@ describe('Rectangle', () => {
   });
 
   it('calculates area', () => {
-    expect(service.area({ a, b })).toBe(a * b);
+    expect(service.area()).toBe(a * b);
   });
 
-  it('calculates circumference', () => {
-    expect(service.circumference({ a, b })).toBe(a * 2 + b * 2);
+  it('calculates perimeter', () => {
+    expect(service.perimeter()).toBe(a * 2 + b * 2);
   });
 });

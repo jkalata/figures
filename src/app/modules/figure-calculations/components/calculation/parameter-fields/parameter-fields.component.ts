@@ -1,5 +1,13 @@
-import { Figure } from './../../interfaces/figure.interfaces';
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { MatInput } from '@angular/material/input';
+import { Figure } from '../../../interfaces/figure.interfaces';
 
 @Component({
   selector: 'app-parameter-fields',
@@ -9,17 +17,11 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class ParameterFieldsComponent implements OnInit {
   @Input() figure: Figure = {} as Figure;
   @Output() parameterChange = new EventEmitter();
-
   args: any;
-
-  constructor() {}
 
   ngOnInit() {
     this.args = this.figure.args;
-    console.log(this.figure, this.args);
   }
-
-  updateArgs(): void {}
 
   emitParameterChange(event: any, key: unknown): void {
     this.args[key as string] = Number(event.target.value);

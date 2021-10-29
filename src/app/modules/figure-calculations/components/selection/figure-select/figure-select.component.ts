@@ -1,5 +1,4 @@
-import { FigureCreator } from './../../creators/FigureCreator';
-import { EFigures } from './../../interfaces/figure.interfaces';
+import { EFigures } from '../../../interfaces/figure.interfaces';
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -12,12 +11,6 @@ export class FigureSelectComponent {
   availableFigures = EFigures;
 
   emitFigureChange(event: any): void {
-    console.log(event.value);
-    console.log(
-      Object.getOwnPropertyNames(
-        Object.getPrototypeOf(new FigureCreator().create(event.value))
-      )
-    );
     this.figureChange.emit(event.value);
   }
 }

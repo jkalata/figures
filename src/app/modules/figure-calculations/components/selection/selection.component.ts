@@ -18,12 +18,13 @@ export class SelectionComponent implements OnInit {
   figure!: Figure;
   calculation!: ECalculations;
   possibleCalculations: string[] = [];
+  private figureCreator = new FigureCreator();
   constructor() {}
 
   ngOnInit(): void {}
 
   changeFigure(event: EFigures) {
-    this.figure = new FigureCreator().create(event);
+    this.figure = this.figureCreator.create(event);
     this.possibleCalculations = this.getPossibleCalculations();
   }
 

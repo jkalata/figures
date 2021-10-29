@@ -1,6 +1,7 @@
 <mat-label>Calculation type</mat-label>
 <mat-radio-group>
   <mat-radio-button
+    data-testid="calc"
     *ngFor="let calculation of calculations"
     [value]="calculation"
     (change)="emitCalcChange($event)"
