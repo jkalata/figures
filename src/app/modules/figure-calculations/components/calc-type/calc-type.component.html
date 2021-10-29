@@ -1,10 +1,10 @@
-<mat-label>Typ obliczeń</mat-label>
+<mat-label>Calculation type</mat-label>
 <mat-radio-group>
   <mat-radio-button
-    *ngFor="let calculation of calculations | keyvalue"
-    [value]="calculation.value"
+    *ngFor="let calculation of calculations"
+    [value]="calculation"
     (change)="emitCalcChange($event)"
   >
-    {{ calculation.key }}
+    {{ calculation }}
   </mat-radio-button>
 </mat-radio-group>

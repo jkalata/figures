@@ -1,17 +1,11 @@
 <mat-card>
-  <div class="options-container">
-    <app-figure-select
-      (figureChange)="changeFigure($event)"
-    ></app-figure-select>
-    <app-calc-type
-      *ngIf="pickedFigure"
-      (calculationChange)="changeCalculation($event)"
-    ></app-calc-type>
-  </div>
-  <app-parameter-fields
-    [figure]="pickedFigure"
-    (parameterChange)="updateFigureArgs($event)"
-    *ngIf="pickedCalculation && pickedFigure"
-  ></app-parameter-fields>
-  <app-output [output]="output"></app-output>
+  <app-selection
+    *ngIf="step === 'select'"
+    (calculationParams)="changeCalculationParams($event)"
+  ></app-selection>
+  <app-calculation
+    *ngIf="step === 'calculate'"
+    [calculationParams]="calculationParams"
+    (goToSelection)="step = 'select'"
+  ></app-calculation>
 </mat-card>

@@ -1,11 +1,10 @@
-<div *ngFor="let field of args | keyvalue">
+<mat-form-field *ngFor="let field of args | keyvalue" appearance="outline">
   <mat-label>{{ field.key }}</mat-label>
   <input
     type="number"
+    min="0"
     matInput
     [value]="field.value"
-    (input)="updateArgs($event, field.key)"
+    (change)="emitParameterChange($event, field.key)"
   />
-</div>
-
-<button mat-raised-button (click)="emitParameterChange()">Oblicz</button>
+</mat-form-field>

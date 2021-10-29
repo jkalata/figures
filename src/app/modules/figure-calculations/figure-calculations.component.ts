@@ -1,11 +1,9 @@
-import { FigureCalculator } from './FigureCalculator';
-import { FigureCreator } from './creators/FigureCreator';
 import {
-  IFigure,
-  EFigures,
   ECalculations,
+  Figure,
+  ICalculationParams,
 } from './interfaces/figure.interfaces';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,9 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FigureCalculationsComponent {
   pickedCalculation!: ECalculations;
-  pickedFigure!: IFigure;
+  pickedFigure!: Figure;
   form: FormGroup;
   output: number = 0;
+  calculationParams!: ICalculationParams;
+
+  step: 'select' | 'calculate' = 'select';
 
   constructor(private fb: FormBuilder) {
     this.form = this.initFormGroup();
@@ -30,23 +31,8 @@ export class FigureCalculationsComponent {
     });
   }
 
-  changeFigure(figure: EFigures): void {
-    this.pickedFigure = new FigureCreator().create(figure);
-  }
-
-  changeCalculation(calculation: ECalculations): void {
-    this.pickedCalculation = calculation;
-  }
-
-  updateFigureArgs(event: any): void {
-    this.pickedFigure.args = event;
-    this.calculate();
-  }
-
-  calculate() {
-    this.output = new FigureCalculator().calculateOutput(
-      this.pickedCalculation,
-      this.pickedFigure
-    );
+  changeCalculationParams(event: ICalculationParams): void {
+    this.calculationParams = event;
+    this.step = 'calculate';
   }
 }

@@ -1,5 +1,5 @@
 import { ECalculations } from './../../interfaces/figure.interfaces';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-calc-type',
@@ -7,9 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./calc-type.component.scss'],
 })
 export class CalcTypeComponent {
+  @Input() calculations: string[] = [];
   @Output() calculationChange: EventEmitter<ECalculations> = new EventEmitter();
-
-  calculations = ECalculations;
 
   emitCalcChange(event: any): void {
     this.calculationChange.emit(event.value);

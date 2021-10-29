@@ -1,6 +1,4 @@
-import { ParameterFieldsCreator } from './../../creators/parameter-fields/ParameterFieldsCreator';
-import { FormGroup } from '@angular/forms';
-import { IFigure } from './../../interfaces/figure.interfaces';
+import { Figure } from './../../interfaces/figure.interfaces';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +7,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./parameter-fields.component.scss'],
 })
 export class ParameterFieldsComponent implements OnInit {
-  @Input() figure: IFigure = {} as IFigure;
+  @Input() figure: Figure = {} as Figure;
   @Output() parameterChange = new EventEmitter();
 
   args: any;
@@ -18,13 +16,13 @@ export class ParameterFieldsComponent implements OnInit {
 
   ngOnInit() {
     this.args = this.figure.args;
+    console.log(this.figure, this.args);
   }
 
-  updateArgs(event: any, key: unknown): void {
+  updateArgs(): void {}
+
+  emitParameterChange(event: any, key: unknown): void {
     this.args[key as string] = Number(event.target.value);
-  }
-
-  emitParameterChange(): void {
     this.parameterChange.emit(this.args);
   }
 }

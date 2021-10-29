@@ -1,11 +1,10 @@
-import { IFigure, IRectangle } from '../../interfaces/figure.interfaces';
-import { Figure } from '../Figure';
-export class Rectangle extends Figure {
+import { IRectangle } from '../../interfaces/figure.interfaces';
+import { TwoDimensionalFigure } from '../2DFigure';
+export class Rectangle implements TwoDimensionalFigure {
   args: IRectangle = {
     a: 0,
     b: 0,
   };
-
   area(): number {
     return this.args.a * this.args.b;
   }

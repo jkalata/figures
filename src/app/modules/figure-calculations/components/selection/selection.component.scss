@@ -1,0 +1,13 @@
+.selection-container {
+  display: flex;
+  flex-direction: column;
+}
+
+app-calc-type {
+  padding: 1em;
+}
+
+app-figure-select {
+  min-width: 150px;
+  padding: 1em;
+}

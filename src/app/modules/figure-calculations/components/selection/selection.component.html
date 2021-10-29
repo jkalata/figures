@@ -1,0 +1,16 @@
+<div class="selection-container">
+  <app-figure-select (figureChange)="changeFigure($event)"></app-figure-select>
+  <app-calc-type
+    *ngIf="possibleCalculations.length > 0"
+    [calculations]="possibleCalculations"
+    (calculationChange)="changeCalculation($event)"
+  ></app-calc-type>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!(figure && calculation)"
+    (click)="emitCalculationParams()"
+  >
+    Next
+  </button>
+</div>

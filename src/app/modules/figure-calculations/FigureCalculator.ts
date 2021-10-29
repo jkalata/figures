@@ -1,12 +1,8 @@
-import { Figure } from './creators/Figure';
-import { ECalculations } from './interfaces/figure.interfaces';
+import { ICalculationParams } from './interfaces/figure.interfaces';
 export class FigureCalculator {
-  calculateOutput(calculation: ECalculations, figure: Figure): number {
-    switch (calculation) {
-      case ECalculations.area:
-        return figure.area();
-      case ECalculations.circumference:
-        return figure.circumference();
-    }
+  calculateOutput(params: ICalculationParams, args: any): number {
+    return params.figure[params.calculation] !== undefined
+      ? (params.figure[params.calculation] as any)(args)
+      : NaN;
   }
 }

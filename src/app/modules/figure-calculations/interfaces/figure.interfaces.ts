@@ -1,8 +1,16 @@
-export interface IFigure {
+export interface IBasicFigure {
   args: any;
   area(): number;
-  circumference(): number;
 }
+
+export interface ITwoDimensionalFigure extends IBasicFigure {
+  circumference?(): number;
+}
+
+export interface IThreeDimensionalFigure extends IBasicFigure {
+  volume?(): number;
+}
+export type Figure = ITwoDimensionalFigure & IThreeDimensionalFigure;
 
 export interface IRectangle {
   a: number;
@@ -26,4 +34,9 @@ export enum EFigures {
 export enum ECalculations {
   area = 'area',
   circumference = 'circumference',
+}
+
+export interface ICalculationParams {
+  figure: Figure;
+  calculation: ECalculations;
 }

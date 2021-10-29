@@ -1,0 +1,10 @@
+<div class="calculation-container">
+  <app-parameter-fields
+    [figure]="calculationParams.figure"
+    (parameterChange)="calculate($event)"
+  ></app-parameter-fields>
+  <app-output [output]="output"></app-output>
+  <button mat-raised-button color="accent" (click)="emitGoToSelection()">
+    Back
+  </button>
+</div>

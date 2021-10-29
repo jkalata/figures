@@ -1,8 +1,18 @@
-import { Rectangle } from './../rectangle/Rectangle';
-import { IRectangle } from './../../interfaces/figure.interfaces';
-export class Square extends Rectangle {
-  args: IRectangle = {
+import { TwoDimensionalFigure } from '../2DFigure';
+import { ISquare } from './../../interfaces/figure.interfaces';
+export class Square extends TwoDimensionalFigure {
+  constructor() {
+    super();
+  }
+  args: ISquare = {
     a: 0,
-    b: this.args.a,
   };
+
+  area(): number {
+    return Math.pow(this.args.a, 2);
+  }
+
+  circumference(): number {
+    return 4 * this.args.a;
+  }
 }
