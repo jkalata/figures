@@ -1,4 +1,4 @@
-import { ECalculations } from '../../../interfaces/figure.interfaces';
+import { ECalculations } from './../../../../../interfaces/figure.interfaces';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({

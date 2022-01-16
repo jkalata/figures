@@ -1,6 +1,6 @@
 export type Figure = ITwoDimensionalFigure;
 export interface IBasicFigure {
-  args: any;
+  args: FigureParamsUnion;
   name: string;
   area(): number;
 }
@@ -37,3 +37,5 @@ export interface ICalculationParams {
   figure: Figure;
   calculation: ECalculations;
 }
+
+export type FigureParamsUnion = IRectangle | ISquare | ICircle;

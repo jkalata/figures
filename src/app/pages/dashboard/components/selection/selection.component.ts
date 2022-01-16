@@ -1,30 +1,33 @@
-import { FigureCreator } from './../../creators/FigureCreator';
+import { FigureCreator } from './../../../../creators/FigureCreator';
 import {
+  ICalculationParams,
+  Figure,
   ECalculations,
   EFigures,
-  Figure,
-  ICalculationParams,
-} from './../../interfaces/figure.interfaces';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+} from './../../../../interfaces/figure.interfaces';
+import { CalcService } from './../../../../services/calc.service';
+
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selection',
   templateUrl: './selection.component.html',
   styleUrls: ['./selection.component.scss'],
 })
-export class SelectionComponent implements OnInit {
+export class SelectionComponent {
   @Output() calculationParams: EventEmitter<ICalculationParams> =
     new EventEmitter();
   figure!: Figure;
   calculation!: ECalculations;
   possibleCalculations: string[] = [];
   private figureCreator = new FigureCreator();
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(private router: Router, private calcService: CalcService) {}
 
   changeFigure(event: EFigures) {
     this.figure = this.figureCreator.create(event);
+    this.calcService.setFigure(this.figure);
     this.possibleCalculations = this.getPossibleCalculations();
   }
 
@@ -36,12 +39,10 @@ export class SelectionComponent implements OnInit {
 
   changeCalculation(event: ECalculations) {
     this.calculation = event;
+    this.calcService.setCalculation(this.calculation);
   }
 
-  emitCalculationParams() {
-    this.calculationParams.emit({
-      figure: this.figure,
-      calculation: this.calculation,
-    });
+  goToCalculations() {
+    this.router.navigate(['calculation']);
   }
 }

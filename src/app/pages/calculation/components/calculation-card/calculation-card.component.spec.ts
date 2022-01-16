@@ -3,22 +3,22 @@ import {
   ICalculationParams,
   ECalculations,
   Figure,
-} from './../../interfaces/figure.interfaces';
+} from './../../../../modules/figure-calculations/interfaces/figure.interfaces';
 import { ParameterFieldsComponent } from './parameter-fields/parameter-fields.component';
 import { OutputComponent } from './output/output.component';
 import { MockComponents } from 'ng-mocks';
-import { CalculationComponent } from './calculation.component';
+import { CalculationCardComponent } from './calculation-card.component';
 import { Spectator, createComponentFactory, byTestId } from '@ngneat/spectator';
 
 describe('CalculationComponent', () => {
-  let component: CalculationComponent;
-  let spectator: Spectator<CalculationComponent>;
+  let component: CalculationCardComponent;
+  let spectator: Spectator<CalculationCardComponent>;
   const calculationParams: ICalculationParams = {
     calculation: ECalculations.area,
     figure: {} as Figure,
   };
   const createComponent = createComponentFactory({
-    component: CalculationComponent,
+    component: CalculationCardComponent,
     declarations: [MockComponents(OutputComponent, ParameterFieldsComponent)],
   });
 
