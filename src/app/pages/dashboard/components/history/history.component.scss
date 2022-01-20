@@ -1,0 +1,18 @@
+mat-card {
+  margin: 1em;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.date {
+  font-size: small;
+  font-weight: 100;
+  color: gray;
+}
+
+.title {
+  text-align: center;
+}

@@ -1,0 +1,20 @@
+<h2 class="title" *ngIf="history.length > 0; else noHistory">
+  Recent calculations
+</h2>
+<ng-template #noHistory>
+  <h2 class="title">No recent calculations</h2>
+</ng-template>
+<mat-card *ngFor="let entry of history">
+  <mat-card-title>
+    <span class="date">{{ entry.date }}</span>
+    <h2>
+      {{ entry.figure + " " + entry.calculation }}
+    </h2>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let arg of entry.args | keyvalue">
+      {{ arg.key }} = {{ arg.value }}
+    </div>
+    <strong>Output = {{ entry.output }}</strong>
+  </mat-card-content>
+</mat-card>
