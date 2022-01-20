@@ -1,3 +1,6 @@
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { CalcTypeComponent } from './calc-type/calc-type.component';
@@ -6,6 +9,7 @@ import { SelectionComponent } from './selection.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatOptionModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 const components = [
   SelectionComponent,
@@ -15,7 +19,16 @@ const components = [
 
 @NgModule({
   declarations: components,
-  imports: [CommonModule, MatOptionModule, MatSelectModule, MatRadioModule],
+  imports: [
+    CommonModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   exports: components,
 })
 export class SelectionModule {}

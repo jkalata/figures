@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline">
+  <mat-label>Figure</mat-label>
+  <mat-select
+    data-testid="select"
+    placeholder="Select figure"
+    (selectionChange)="emitFigureChange($event)"
+  >
+    <mat-option
+      *ngFor="let figure of availableFigures | keyvalue"
+      [value]="figure.value"
+      >{{ figure.key }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>

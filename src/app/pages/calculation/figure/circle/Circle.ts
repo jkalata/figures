@@ -1,4 +1,4 @@
-import { ICircle } from '../../interfaces/figure.interfaces';
+import { ICircle } from './../figure.interfaces';
 import { TwoDimensionalFigure } from '../2DFigure';
 export class Circle extends TwoDimensionalFigure {
   name = 'Circle';

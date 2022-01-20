@@ -1,13 +1,12 @@
-import { FigureCreator } from './../../../../creators/FigureCreator';
+import { FigureCreator } from './../../figure/FigureCreator';
 import {
   ICalculationParams,
   Figure,
   ECalculations,
   EFigures,
-} from './../../../../interfaces/figure.interfaces';
-import { CalcService } from './../../../../services/calc.service';
+} from './../../figure/figure.interfaces';
 
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,16 +17,17 @@ import { Router } from '@angular/router';
 export class SelectionComponent {
   @Output() calculationParams: EventEmitter<ICalculationParams> =
     new EventEmitter();
+  @Output() completed: EventEmitter<boolean> = new EventEmitter();
+
   figure!: Figure;
   calculation!: ECalculations;
   possibleCalculations: string[] = [];
   private figureCreator = new FigureCreator();
 
-  constructor(private router: Router, private calcService: CalcService) {}
+  constructor(private router: Router) {}
 
   changeFigure(event: EFigures) {
     this.figure = this.figureCreator.create(event);
-    this.calcService.setFigure(this.figure);
     this.possibleCalculations = this.getPossibleCalculations();
   }
 
@@ -39,10 +39,13 @@ export class SelectionComponent {
 
   changeCalculation(event: ECalculations) {
     this.calculation = event;
-    this.calcService.setCalculation(this.calculation);
+    this.completed.emit(true);
   }
 
-  goToCalculations() {
-    this.router.navigate(['calculation']);
+  emitParams() {
+    this.calculationParams.emit({
+      calculation: this.calculation,
+      figure: this.figure,
+    });
   }
 }

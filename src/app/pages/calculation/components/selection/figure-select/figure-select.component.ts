@@ -1,4 +1,4 @@
-import { EFigures } from './../../../../../interfaces/figure.interfaces';
+import { EFigures } from './../../../figure/figure.interfaces';
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({

@@ -1,4 +1,4 @@
-import { IRectangle } from '../../interfaces/figure.interfaces';
+import { IRectangle } from './../figure.interfaces';
 import { TwoDimensionalFigure } from '../2DFigure';
 export class Rectangle implements TwoDimensionalFigure {
   name = 'Rectangle';

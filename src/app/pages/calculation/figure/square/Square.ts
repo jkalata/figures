@@ -1,5 +1,5 @@
+import { ISquare } from './../figure.interfaces';
 import { TwoDimensionalFigure } from '../2DFigure';
-import { ISquare } from './../../interfaces/figure.interfaces';
 export class Square extends TwoDimensionalFigure {
   name = 'Square';
   constructor() {
