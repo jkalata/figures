@@ -1,1 +1,9 @@
-<app-calculation-card></app-calculation-card>
+<app-selection
+  *ngIf="step === 'selection'"
+  (calculationParams)="paramsChange($event)"
+></app-selection>
+<app-calculation-card
+  *ngIf="step === 'calculation'"
+  (back)="step = 'selection'"
+  [calculationParams]="calculationParams"
+></app-calculation-card>

@@ -5,15 +5,24 @@
   >
   <app-parameter-fields
     [figure]="calculationParams.figure"
-    (parameterChange)="calculate($event)"
+    (parameterChange)="changeParams($event)"
   ></app-parameter-fields>
   <app-output [output]="output"></app-output>
-  <button
-    mat-raised-button
-    color="accent"
-    (click)="emitGoToSelection()"
-    data-testid="goback-button"
-  >
-    Back
-  </button>
+  <div class="button-container">
+    <button
+      mat-raised-button
+      color="primary"
+      data-testid="goback-button"
+      (click)="emitBack()"
+    >
+      Back
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="calculate(calculationParams)"
+    >
+      Calculate
+    </button>
+  </div>
 </div>

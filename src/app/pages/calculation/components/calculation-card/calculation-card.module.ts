@@ -1,3 +1,5 @@
+import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ParameterFieldsComponent } from './parameter-fields/parameter-fields.component';
@@ -14,7 +16,13 @@ const components = [
 
 @NgModule({
   declarations: [components],
-  imports: [CommonModule, MatFormFieldModule, MatInputModule],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatStepperModule,
+    MatButtonModule,
+  ],
   exports: [components],
 })
 export class CalculationCardModule {}

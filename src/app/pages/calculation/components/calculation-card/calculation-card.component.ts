@@ -1,11 +1,19 @@
+import { DateTime } from 'luxon';
+import { ICalculatorHistoryStored } from './../../../dashboard/components/history/interfaces/history.interfaces';
+import { HistoryService } from './../../../../services/history.service';
+import { FigureCalculator } from './../../figure/FigureCalculator';
 import {
   ICalculationParams,
   FigureParamsUnion,
-} from './../../../../interfaces/figure.interfaces';
-import { Router } from '@angular/router';
-import { CalcService } from './../../../../services/calc.service';
-import { FigureCalculator } from '../../FigureCalculator';
-import { Component, EventEmitter, Output } from '@angular/core';
+} from './../../figure/figure.interfaces';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-calculation-card',
@@ -13,28 +21,45 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./calculation-card.component.scss'],
 })
 export class CalculationCardComponent {
-  @Output() goToSelection = new EventEmitter();
+  @Input() calculationParams: ICalculationParams = {} as ICalculationParams;
+  @Output() back = new EventEmitter();
 
-  calculationParams: ICalculationParams;
   output: number = 0;
+  params!: FigureParamsUnion;
   figureCalculator = new FigureCalculator();
 
-  constructor(private calcService: CalcService, private router: Router) {
-    this.calculationParams = {
-      calculation: this.calcService.getCalculation(),
-      figure: this.calcService.getFigure(),
-    };
-    console.log(this.calculationParams);
+  constructor(private historyService: HistoryService) {}
+
+  changeParams(args: FigureParamsUnion): void {
+    this.params = args;
   }
 
-  calculate(args: FigureParamsUnion): void {
-    this.output = this.figureCalculator.calculateOutput(
-      this.calculationParams,
-      args
+  calculate(calculationParams: ICalculationParams): void {
+    if (calculationParams !== null) {
+      this.output = this.performCalculation(calculationParams);
+      this.addHistoryEntry(calculationParams);
+    }
+  }
+
+  private performCalculation(calculationParams: ICalculationParams): number {
+    return this.figureCalculator.calculateOutput(
+      calculationParams,
+      this.params
     );
   }
 
-  emitGoToSelection(): void {
-    this.router.navigate(['dashboard']);
+  private addHistoryEntry(calculationParams: ICalculationParams): void {
+    const entry: ICalculatorHistoryStored = {
+      date: DateTime.now().toMillis(),
+      args: this.params,
+      calculation: calculationParams.calculation,
+      figure: calculationParams.figure.name,
+      output: this.output,
+    };
+    this.historyService.addHistoryEntry(entry);
+  }
+
+  emitBack() {
+    this.back.emit();
   }
 }
