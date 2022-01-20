@@ -15,7 +15,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'calculation',
+    path: 'calculator',
     loadChildren: () =>
       import('./pages/calculation/calculation.module').then(
         (m) => m.CalculationModule
