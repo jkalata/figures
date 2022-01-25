@@ -15,7 +15,6 @@ export class CalculationComponent {
   completed: boolean = false;
 
   paramsChange(event: ICalculationParams) {
-    console.log(event);
     this.calculationParams = event;
     this.step = 'calculation';
   }
