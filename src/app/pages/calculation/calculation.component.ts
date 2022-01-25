@@ -1,6 +1,5 @@
 import { ICalculationParams } from './figure/figure.interfaces';
-import { CalculationCardComponent } from './components/calculation-card/calculation-card.component';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-calculation',
@@ -8,14 +7,17 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./calculation.component.scss'],
 })
 export class CalculationComponent {
-  @ViewChild('calculationCar')
-  calculationCard!: CalculationCardComponent;
-  step: 'calculation' | 'selection' = 'selection';
+  availableSteps = Steps;
+  step: Steps = Steps.selection;
   calculationParams!: ICalculationParams;
-  completed: boolean = false;
 
   paramsChange(event: ICalculationParams) {
     this.calculationParams = event;
-    this.step = 'calculation';
+    this.step = Steps.calculation;
   }
+}
+
+enum Steps {
+  'calculation',
+  'selection',
 }

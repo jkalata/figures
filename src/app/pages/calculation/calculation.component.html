@@ -1,9 +1,9 @@
 <app-selection
-  *ngIf="step === 'selection'"
+  *ngIf="step === availableSteps.selection"
   (calculationParams)="paramsChange($event)"
 ></app-selection>
 <app-calculation-card
-  *ngIf="step === 'calculation'"
-  (back)="step = 'selection'"
+  *ngIf="step === availableSteps.calculation"
+  (back)="step = availableSteps.selection"
   [calculationParams]="calculationParams"
 ></app-calculation-card>
