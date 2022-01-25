@@ -1,4 +1,7 @@
-<mat-form-field *ngFor="let field of args | keyvalue" appearance="outline">
+<mat-form-field
+  *ngFor="let field of figure.args | keyvalue"
+  appearance="outline"
+>
   <mat-label>{{ field.key }}</mat-label>
   <input
     #input
