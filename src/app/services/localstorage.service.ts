@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
+import { STORAGE_TOKEN } from './../app.module';
+import { Inject, Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class LocalstorageService {
-  constructor() {}
+  constructor(@Inject(STORAGE_TOKEN) private storage: Storage) {}
 
   setItem(key: string, value: object | string): void {
-    localStorage.setItem(key, JSON.stringify(value));
+    this.storage.setItem(key, JSON.stringify(value));
   }
 
   getObject(key: string): object {
-    const item = localStorage.getItem(key);
+    const item = this.storage.getItem(key);
     if (item !== null) {
       try {
         return JSON.parse(item);
@@ -25,6 +24,6 @@ export class LocalstorageService {
   }
 
   getString(key: string): string {
-    return localStorage.getItem(key) ?? '';
+    return this.storage.getItem(key) ?? '';
   }
 }
