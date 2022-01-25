@@ -1,0 +1,18 @@
+{
+  "DASHBOARD": "Panel",
+  "CALCULATOR": "Kalkulator",
+  "BACK": "Wstecz",
+  "CALCULATE": "Oblicz",
+  "RESULT": "Wynik",
+  "CIRCLE": "Koło",
+  "RECTANGLE": "Prostokąt",
+  "SQUARE": "Kwadrat",
+  "AREA": "Pole",
+  "PERIMETER": "Obwód",
+  "CALCULATION_TYPE": "Typ obliczeń",
+  "FIGURE": "Figura",
+  "SELECT_FIGURE": "Wybierz figurę",
+  "NEXT": "Dalej",
+  "RECENT_CALCULATIONS": "Ostatnie obliczenia",
+  "NO_RECENT_CALCULATIONS": "Brak ostatnich obliczeń"
+}

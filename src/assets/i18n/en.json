@@ -1,0 +1,18 @@
+{
+  "DASHBOARD": "Dashboard",
+  "CALCULATOR": "Calculator",
+  "BACK": "Back",
+  "CALCULATE": "Calculate",
+  "RESULT": "Result",
+  "CIRCLE": "Circle",
+  "RECTANGLE": "Rectangle",
+  "SQUARE": "Square",
+  "AREA": "Area",
+  "PERIMETER": "Perimeter",
+  "CALCULATION_TYPE": "Calculation type",
+  "FIGURE": "Figure",
+  "SELECT_FIGURE": "Select figure",
+  "NEXT": "Next",
+  "RECENT_CALCULATIONS": "Recent calculations",
+  "NO_RECENT_CALCULATIONS": "No recent calculations"
+}
