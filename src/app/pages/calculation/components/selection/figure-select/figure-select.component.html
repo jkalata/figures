@@ -1,14 +1,14 @@
-<mat-form-field appearance="outline">
-  <mat-label>Figure</mat-label>
+<mat-form-field appearance="outline" *transloco="let translate">
+  <mat-label>{{ translate("FIGURE") }}</mat-label>
   <mat-select
     data-testid="select"
-    placeholder="Select figure"
+    placeholder="{{ translate('SELECT_FIGURE') }}"
     (selectionChange)="emitFigureChange($event)"
   >
     <mat-option
       *ngFor="let figure of availableFigures | keyvalue"
       [value]="figure.value"
-      >{{ figure.key }}</mat-option
+      >{{ translate(figure.key.toUpperCase()) }}</mat-option
     >
   </mat-select>
 </mat-form-field>

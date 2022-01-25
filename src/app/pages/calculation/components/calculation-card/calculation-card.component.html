@@ -1,7 +1,7 @@
-<div class="calculation-container">
+<div class="calculation-container" *transloco="let translate">
   <mat-label
-    >{{ calculationParams.figure.name }}
-    {{ calculationParams.calculation }}</mat-label
+    >{{ translate(calculationParams.figure.name.toUpperCase()) }} -
+    {{ translate(calculationParams.calculation.toUpperCase()) }}</mat-label
   >
   <app-parameter-fields
     [figure]="calculationParams.figure"
@@ -15,14 +15,14 @@
       data-testid="goback-button"
       (click)="emitBack()"
     >
-      Back
+      {{ translate("BACK") }}
     </button>
     <button
       mat-raised-button
       color="accent"
       (click)="calculate(calculationParams)"
     >
-      Calculate
+      {{ translate("CALCULATE") }}
     </button>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { TranslocoModule } from '@ngneat/transloco';
 import { SelectionModule } from './components/selection/selection.module';
 import { CalculationRoutingModule } from './calculation-routing.module';
 import { CalculationCardModule } from './components/calculation-card/calculation-card.module';
@@ -14,6 +15,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     SelectionModule,
     CalculationRoutingModule,
     MatStepperModule,
+    TranslocoModule,
   ],
 })
 export class CalculationModule {}

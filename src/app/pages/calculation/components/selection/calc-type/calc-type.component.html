@@ -1,11 +1,13 @@
-<mat-label>Calculation type</mat-label>
-<mat-radio-group>
-  <mat-radio-button
-    data-testid="calc"
-    *ngFor="let calculation of calculations"
-    [value]="calculation"
-    (change)="emitCalcChange($event)"
-  >
-    {{ calculation }}
-  </mat-radio-button>
-</mat-radio-group>
+<ng-container *transloco="let translate">
+  <mat-label>{{ translate("CALCULATION_TYPE") }}</mat-label>
+  <mat-radio-group>
+    <mat-radio-button
+      data-testid="calc"
+      *ngFor="let calculation of calculations"
+      [value]="calculation"
+      (change)="emitCalcChange($event)"
+    >
+      {{ translate(calculation.toUpperCase()) }}
+    </mat-radio-button>
+  </mat-radio-group>
+</ng-container>

@@ -1,16 +1,18 @@
-<app-figure-select (figureChange)="changeFigure($event)"></app-figure-select>
-<app-calc-type
+<ng-container *transloco="let translate">
+  <app-figure-select (figureChange)="changeFigure($event)"></app-figure-select>
+  <app-calc-type
   *ngIf="possibleCalculations.length > 0"
   [calculations]="possibleCalculations"
   (calculationChange)="changeCalculation($event)"
-></app-calc-type>
-<button
+  ></app-calc-type>
+  <button
   style="float: right"
   data-testid="next"
   mat-raised-button
   color="primary"
   [disabled]="!(figure && calculation)"
   (click)="emitParams()"
->
-  Next
+  >
+  {{translate("NEXT")}}
 </button>
+</ng-container>

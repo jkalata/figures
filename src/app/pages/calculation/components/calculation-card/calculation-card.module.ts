@@ -1,3 +1,4 @@
+import { TranslocoModule } from '@ngneat/transloco';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +23,7 @@ const components = [
     MatInputModule,
     MatStepperModule,
     MatButtonModule,
+    TranslocoModule,
   ],
   exports: [components],
 })

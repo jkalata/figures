@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline">
-  <mat-label>Result: </mat-label>
+<mat-form-field appearance="outline" *transloco="let translate">
+  <mat-label>{{ translate("RESULT") }}: </mat-label>
   <input matInput [value]="output" />
 </mat-form-field>
