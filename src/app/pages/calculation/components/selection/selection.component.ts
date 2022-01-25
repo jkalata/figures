@@ -6,8 +6,7 @@ import {
   EFigures,
 } from './../../figure/figure.interfaces';
 
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-selection',
@@ -17,16 +16,13 @@ import { Router } from '@angular/router';
 export class SelectionComponent {
   @Output() calculationParams: EventEmitter<ICalculationParams> =
     new EventEmitter();
-  @Output() completed: EventEmitter<boolean> = new EventEmitter();
 
   figure!: Figure;
   calculation!: ECalculations;
   possibleCalculations: string[] = [];
   private figureCreator = new FigureCreator();
 
-  constructor(private router: Router) {}
-
-  changeFigure(event: EFigures) {
+  changeFigure(event: EFigures): void {
     this.figure = this.figureCreator.create(event);
     this.possibleCalculations = this.getPossibleCalculations();
   }
@@ -37,12 +33,11 @@ export class SelectionComponent {
     ).filter((property) => property !== 'constructor');
   }
 
-  changeCalculation(event: ECalculations) {
+  changeCalculation(event: ECalculations): void {
     this.calculation = event;
-    this.completed.emit(true);
   }
 
-  emitParams() {
+  emitParams(): void {
     this.calculationParams.emit({
       calculation: this.calculation,
       figure: this.figure,
