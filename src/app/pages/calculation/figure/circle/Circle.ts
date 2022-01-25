@@ -4,13 +4,13 @@ export class Circle extends TwoDimensionalFigure {
   name = 'Circle';
 
   args: ICircle = {
-    radius: 0,
+    r: 0,
   };
   area(): number {
-    return Math.PI * Math.pow(this.args.radius, 2);
+    return Math.PI * Math.pow(this.args.r, 2);
   }
 
   perimeter(): number {
-    return 2 * Math.PI * this.args.radius;
+    return 2 * Math.PI * this.args.r;
   }
 }

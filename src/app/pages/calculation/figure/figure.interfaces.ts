@@ -10,16 +10,16 @@ export interface ITwoDimensionalFigure extends IBasicFigure {
 }
 
 export interface IRectangle {
-  a: number;
+  [a: string]: number;
   b: number;
 }
 
 export interface ISquare {
-  a: number;
+  [a: string]: number;
 }
 
 export interface ICircle {
-  radius: number;
+  [r: string]: number;
 }
 
 export enum EFigures {

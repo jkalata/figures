@@ -1,4 +1,4 @@
-import { Figure } from './../../../figure/figure.interfaces';
+import { Figure, FigureParamsUnion } from './../../../figure/figure.interfaces';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
@@ -9,14 +9,15 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class ParameterFieldsComponent implements OnInit {
   @Input() figure: Figure = {} as Figure;
   @Output() parameterChange = new EventEmitter();
-  args!: any;
+  args!: FigureParamsUnion;
 
   ngOnInit() {
-    this.args = this.figure.args;
+    this.args = Object.assign(this.figure.args);
   }
 
-  emitParameterChange(event: any, key: unknown): void {
-    this.args[key as string] = Number(event.target.value);
+  emitParameterChange(event: Event, key: string): void {
+    const input = event.target as HTMLInputElement;
+    this.args[key] = Number(input.value);
     this.parameterChange.emit(this.args);
   }
 }
