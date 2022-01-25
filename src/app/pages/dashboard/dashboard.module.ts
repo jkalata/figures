@@ -1,3 +1,4 @@
+import { TranslocoModule } from '@ngneat/transloco';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
@@ -6,6 +7,11 @@ import { HistoryComponent } from './components/history/history.component';
 import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [DashboardComponent, HistoryComponent],
-  imports: [CommonModule, MatCardModule, DashboardRoutingModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    DashboardRoutingModule,
+    TranslocoModule,
+  ],
 })
 export class DashboardModule {}
