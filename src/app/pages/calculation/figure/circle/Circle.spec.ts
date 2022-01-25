@@ -14,7 +14,7 @@ describe('Circle', () => {
   beforeEach(() => {
     spectator = createService();
     service = spectator.service;
-    service.args = { radius };
+    service.args = { r: radius };
   });
 
   it('should be created', () => {

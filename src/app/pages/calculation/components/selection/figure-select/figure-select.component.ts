@@ -1,3 +1,4 @@
+import { MatSelectChange } from '@angular/material/select';
 import { EFigures } from './../../../figure/figure.interfaces';
 import { Component, Output, EventEmitter } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class FigureSelectComponent {
   @Output() figureChange: EventEmitter<EFigures> = new EventEmitter();
   availableFigures = EFigures;
 
-  emitFigureChange(event: any): void {
+  emitFigureChange(event: MatSelectChange): void {
     this.figureChange.emit(event.value);
   }
 }
