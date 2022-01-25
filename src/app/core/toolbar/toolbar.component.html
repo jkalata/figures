@@ -1,18 +1,23 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *transloco="let translate">
   <mat-toolbar-row>
-    <button
-      mat-raised-button
-      routerLinkActive="mat-accent"
-      [routerLink]="['/dashboard']"
-    >
-      Dashboard
-    </button>
-    <button
-      mat-raised-button
-      routerLinkActive="mat-accent"
-      [routerLink]="['/calculator']"
-    >
-      Calculator
-    </button>
+    <div>
+      <button
+        mat-raised-button
+        routerLinkActive="mat-accent"
+        [routerLink]="['/dashboard']"
+      >
+        {{ translate("DASHBOARD") }}
+      </button>
+      <button
+        mat-raised-button
+        routerLinkActive="mat-accent"
+        [routerLink]="['/calculator']"
+      >
+        {{ translate("CALCULATOR") }}
+      </button>
+    </div>
+    <div>
+      <app-language-select></app-language-select>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

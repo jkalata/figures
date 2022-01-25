@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select [value]="currentLanguage" (selectionChange)="changeLang($event)">
+    <mat-select-trigger>
+      <img src="{{ 'assets/icons/' + currentLanguage + '.svg' }}" />
+    </mat-select-trigger>
+    <mat-option *ngFor="let lang of availableLanguages" [value]="lang">
+      <img src="{{ 'assets/icons/' + lang + '.svg' }}" />
+    </mat-option>
+  </mat-select>
+</mat-form-field>
