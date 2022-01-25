@@ -18,7 +18,7 @@ export const STORAGE_TOKEN = new InjectionToken<Storage>('storage-token');
     HttpClientModule,
     TranslocoRootModule,
   ],
-  providers: [{ provide: STORAGE_TOKEN, useValue: sessionStorage }],
+  providers: [{ provide: STORAGE_TOKEN, useValue: localStorage }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
