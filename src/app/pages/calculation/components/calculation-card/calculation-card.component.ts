@@ -6,14 +6,7 @@ import {
   ICalculationParams,
   FigureParamsUnion,
 } from './../../figure/figure.interfaces';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-calculation-card',
@@ -56,7 +49,7 @@ export class CalculationCardComponent {
       figure: calculationParams.figure.name,
       output: this.calculationResult,
     };
-    this.historyService.addHistoryEntry(entry);
+    this.historyService.add(entry);
   }
 
   emitBack() {

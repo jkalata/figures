@@ -1,29 +1,25 @@
-import { DateTime } from 'luxon';
-import { LocalstorageService } from './localstorage.service';
+import { HISTORY_STORAGE_KEY } from './../pages/dashboard/consts/history.consts';
 import {
   ICalculatorHistory,
   ICalculatorHistoryStored,
 } from './../pages/dashboard/components/history/interfaces/history.interfaces';
-import { Injectable, OnChanges } from '@angular/core';
+import { LocalstorageService } from './localstorage.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+import { DateTime } from 'luxon';
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
 export class HistoryService {
   constructor(private localStorageService: LocalstorageService) {}
 
-  getHistory(): ICalculatorHistory[] {
-    let history: ICalculatorHistoryStored[] = this.getStoredHistory();
-    if (history.length > 0) {
-      return this.convertEpochDatesToObjects(history);
-    } else {
-      return [];
-    }
+  get(): ICalculatorHistory[] {
+    const history: ICalculatorHistoryStored[] = this.getStoredHistory();
+    return history.length > 0 ? this.convertEpochDatesToObjects(history) : [];
   }
 
-  getStoredHistory(): ICalculatorHistoryStored[] {
+  private getStoredHistory(): ICalculatorHistoryStored[] {
     return this.localStorageService.getObject(
-      'history'
+      HISTORY_STORAGE_KEY
     ) as ICalculatorHistoryStored[];
   }
 
@@ -36,26 +32,22 @@ export class HistoryService {
     }));
   }
 
-  addHistoryEntry(entry: ICalculatorHistoryStored): void {
+  add(entry: ICalculatorHistoryStored): void {
     let storedHistory: ICalculatorHistoryStored[] = this.getStoredHistory();
-    console.log(storedHistory);
-    if (storedHistory.length > 0) {
-      this.addToExistingHistory(storedHistory, entry);
-    } else {
-      storedHistory = [entry];
-    }
-    this.localStorageService.setItem('history', storedHistory);
+    storedHistory.length > 0
+      ? this.addToExistingHistory(storedHistory, entry)
+      : (storedHistory = [entry]);
+    this.localStorageService.setItem(HISTORY_STORAGE_KEY, storedHistory);
   }
 
   private addToExistingHistory(
     storedHistory: ICalculatorHistoryStored[],
     entry: ICalculatorHistoryStored
-  ) {
+  ): void {
     if (this.entryLimitReached(storedHistory)) {
       storedHistory.pop();
     }
-    storedHistory.reverse().push(entry);
-    storedHistory.reverse();
+    storedHistory.unshift(entry);
   }
 
   private entryLimitReached(array: ICalculatorHistoryStored[]): boolean {
