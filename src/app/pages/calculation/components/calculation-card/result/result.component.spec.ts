@@ -1,14 +1,14 @@
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { OutputComponent } from './output.component';
+import { ResultComponent } from './result.component';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
-describe('OutputComponent', () => {
-  let component: OutputComponent;
-  let spectator: Spectator<OutputComponent>;
+describe('ResultComponent', () => {
+  let component: ResultComponent;
+  let spectator: Spectator<ResultComponent>;
 
   const createComponent = createComponentFactory({
-    component: OutputComponent,
+    component: ResultComponent,
     imports: [MatFormFieldModule, MatInputModule],
   });
 

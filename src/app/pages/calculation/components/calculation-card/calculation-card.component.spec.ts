@@ -1,11 +1,11 @@
-import { take } from 'rxjs/operators';
 import {
   ICalculationParams,
   ECalculations,
   Figure,
-} from './../../../../modules/figure-calculations/interfaces/figure.interfaces';
+} from './../../figure/figure.interfaces';
+import { take } from 'rxjs/operators';
 import { ParameterFieldsComponent } from './parameter-fields/parameter-fields.component';
-import { OutputComponent } from './output/output.component';
+import { ResultComponent } from './result/result.component';
 import { MockComponents } from 'ng-mocks';
 import { CalculationCardComponent } from './calculation-card.component';
 import { Spectator, createComponentFactory, byTestId } from '@ngneat/spectator';
@@ -19,7 +19,7 @@ describe('CalculationComponent', () => {
   };
   const createComponent = createComponentFactory({
     component: CalculationCardComponent,
-    declarations: [MockComponents(OutputComponent, ParameterFieldsComponent)],
+    declarations: [MockComponents(ResultComponent, ParameterFieldsComponent)],
   });
 
   beforeEach(() => {
@@ -58,19 +58,15 @@ describe('CalculationComponent', () => {
     });
   });
 
-  describe('OutputComponent', () => {
-    it('renders OutputComponent', () => {
-      expect(spectator.query(OutputComponent)).toBeTruthy();
+  describe('ResultComponent', () => {
+    it('renders ResultComponent', () => {
+      expect(spectator.query(ResultComponent)).toBeTruthy();
     });
 
-    it('passes inputs to OutputComponent', () => {
-      expect(spectator.query(OutputComponent)?.output).toBe(component.output);
+    it('passes inputs to ResultComponent', () => {
+      expect(spectator.query(ResultComponent)?.calculationResult).toBe(
+        component.calculationResult
+      );
     });
-  });
-
-  it('emits goToSelection event when button clicked', () => {
-    const spy = spyOn(component.goToSelection, 'emit');
-    spectator.click(byTestId('goback-button'));
-    expect(spy).toHaveBeenCalled();
   });
 });

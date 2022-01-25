@@ -24,7 +24,7 @@ export class CalculationCardComponent {
   @Input() calculationParams: ICalculationParams = {} as ICalculationParams;
   @Output() back = new EventEmitter();
 
-  output: number = 0;
+  calculationResult: number = 0;
   params!: FigureParamsUnion;
   figureCalculator = new FigureCalculator();
 
@@ -36,7 +36,7 @@ export class CalculationCardComponent {
 
   calculate(calculationParams: ICalculationParams): void {
     if (calculationParams !== null) {
-      this.output = this.performCalculation(calculationParams);
+      this.calculationResult = this.performCalculation(calculationParams);
       this.addHistoryEntry(calculationParams);
     }
   }
@@ -54,7 +54,7 @@ export class CalculationCardComponent {
       args: this.params,
       calculation: calculationParams.calculation,
       figure: calculationParams.figure.name,
-      output: this.output,
+      output: this.calculationResult,
     };
     this.historyService.addHistoryEntry(entry);
   }
